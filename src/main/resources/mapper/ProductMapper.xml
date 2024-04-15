@@ -31,4 +31,25 @@
         WHERE client_id = #{clientId}
         ORDER BY id ASC
     </select>
+
+    <select id="selectByNameAndClientId" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM mwms_product
+        WHERE name = #{name} AND client_id = #{clientId}
+        ORDER BY id ASC
+    </select>
+
+    <select id="selectBySkuAndClientId" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM mwms_product
+        WHERE sku = #{sku} AND client_id = #{clientId}
+        ORDER BY id ASC
+    </select>
+
+    <select id="selectByIdAndClientId" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM mwms_product
+        WHERE id = #{id} AND client_id = #{clientId}
+        ORDER BY id ASC
+    </select>
 </mapper>

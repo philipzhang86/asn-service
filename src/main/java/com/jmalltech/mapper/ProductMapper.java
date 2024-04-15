@@ -14,13 +14,20 @@ import java.util.List;
 * @Entity com.jmalltech.entity.Product
 */
 public interface ProductMapper extends BaseMapper<Product> {
+    Product selectByIdAndClientId(@Param("id") Long id, @Param("clientId") Long clientId);
+
     @Select("SELECT * FROM public.mwms_product WHERE name = #{name}")
     Product selectByProductName(@Param("name") String productName);
+
+    Product selectByNameAndClientId(@Param("name") String name, @Param("clientId") Long clientId);
 
     @Select("SELECT * FROM public.mwms_product WHERE sku = #{sku}")
     Product selectProductBySku(@Param("sku") String sku);
 
+    Product selectBySkuAndClientId(@Param("sku") String sku, @Param("clientId") Long clientId);
+
     List<Product> selectProductsByClientId(@Param("clientId") Long clientId);
+
 
 }
 

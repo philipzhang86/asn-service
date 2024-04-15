@@ -42,8 +42,10 @@ public class ProductTest {
 
     @Test
     public void test4(){
-        Product p = service.getBySku("A0003");
-        service.remove(p.getId());
+//        Product p = service.getBySku("A0003");
+//        service.remove(p.getId());
+        Product p = service.getByIdAndClientId(1L, 1L);
+        System.out.println(p);
     }
 
 

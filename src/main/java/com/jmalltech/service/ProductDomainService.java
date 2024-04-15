@@ -20,6 +20,8 @@ public class ProductDomainService {
     private ProductMapper mapper;
     private CacheManager cacheManager;
 
+    private static final String PRODUCT_LIST_CACHE = "productList";
+
     @Autowired
     public ProductDomainService(ProductService service, ProductMapper mapper, CacheManager cacheManager) {
         this.service = service;
@@ -29,24 +31,39 @@ public class ProductDomainService {
 
     public Product insert(Product product) {
         if(service.save(product)){
-            Objects.requireNonNull(cacheManager.getCache("productList")).evict(product.getClientId());
+            Objects.requireNonNull(cacheManager.getCache(PRODUCT_LIST_CACHE)).evict(product.getClientId());
         }
         return product;
     }
 
-    @Cacheable(value = "product", key = "#id", unless = "#result == null")
+    //@Cacheable(value = "product", key = "#id", unless = "#result == null")
     public Product getById(Long id) {
         return service.getById(id);
     }
 
-    @Cacheable(value = "product", key = "#sku", unless = "#result == null")
+    @Cacheable(value = "product", key = "#id", unless = "#result == null")
+    public Product getByIdAndClientId(Long id, Long clientId) {
+        return mapper.selectByIdAndClientId(id, clientId);
+    }
+
+    //@Cacheable(value = "product", key = "#sku", unless = "#result == null")
     public Product getBySku(String sku) {
         return mapper.selectProductBySku(sku);
     }
 
-    @Cacheable(value = "product", key = "#name", unless = "#result == null")
+    @Cacheable(value = "product", key = "#sku", unless = "#result == null")
+    public Product getBySkuAndClientId(String sku, Long clientId) {
+        return mapper.selectBySkuAndClientId(sku, clientId);
+    }
+
+    //@Cacheable(value = "product", key = "#name", unless = "#result == null")
     public Product getByProductName(String name) {
         return mapper.selectByProductName(name);
+    }
+
+    @Cacheable(value = "product", key = "#name", unless = "#result == null")
+    public Product getByNameAndClientId(String name, Long clientId) {
+        return mapper.selectByNameAndClientId(name, clientId);
     }
 
     @Caching(
@@ -58,7 +75,7 @@ public class ProductDomainService {
     public Product update(Product product) {
         boolean success = service.updateById(product);
         if (success) {
-            Objects.requireNonNull(cacheManager.getCache("productList")).evict(product.getClientId());
+            Objects.requireNonNull(cacheManager.getCache(PRODUCT_LIST_CACHE)).evict(product.getClientId());
             service.getById(product.getId());
         }
         return null;
@@ -73,7 +90,7 @@ public class ProductDomainService {
         if (product != null) {
             Objects.requireNonNull(cacheManager.getCache("product")).evict(product.getSku());
             Objects.requireNonNull(cacheManager.getCache("product")).evict(product.getName());
-            Objects.requireNonNull(cacheManager.getCache("productList")).evict(product.getClientId());
+            Objects.requireNonNull(cacheManager.getCache(PRODUCT_LIST_CACHE)).evict(product.getClientId());
         }
         return service.removeById(id);
     }
