@@ -74,6 +74,7 @@ public class ProductController {
 
     @PutMapping("/")
     public ResponseEntity<?> updateProduct(@RequestBody Product product) {
+        System.out.println(product);
         Product updatedProduct = pDService.update(product);
         if (updatedProduct != null) {
             return ResponseEntity.ok(updatedProduct);

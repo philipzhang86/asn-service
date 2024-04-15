@@ -52,7 +52,7 @@ public class ProductTest {
     @Test
     public void test5(){
         //service.remove(11L);
-        List<Product> products = service.getProductListByClientId(2L);
+        List<Product> products = service.getProductListByClientId(5L);
         for (Product p : products) {
             System.out.println(p);
         }

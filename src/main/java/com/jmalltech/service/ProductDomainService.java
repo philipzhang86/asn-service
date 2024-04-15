@@ -19,7 +19,6 @@ public class ProductDomainService {
     private ProductService service;
     private ProductMapper mapper;
     private CacheManager cacheManager;
-
     private static final String PRODUCT_LIST_CACHE = "productList";
 
     @Autowired
@@ -76,7 +75,7 @@ public class ProductDomainService {
         boolean success = service.updateById(product);
         if (success) {
             Objects.requireNonNull(cacheManager.getCache(PRODUCT_LIST_CACHE)).evict(product.getClientId());
-            service.getById(product.getId());
+            return service.getById(product.getId());
         }
         return null;
     }
