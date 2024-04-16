@@ -70,7 +70,7 @@ public class AsnController {
     public ResponseEntity<?> deleteAsn(@PathVariable Long id) {
         boolean deleted = aService.remove(id);
         if (deleted) {
-            return ResponseEntity.ok("Asn deleted successfully.");
+            return ResponseEntity.ok().body("{\"message\":\"Asn deleted successfully.\"}");
         } else {
             return ResponseHelper.badRequestResponse("Asn not found.");
         }

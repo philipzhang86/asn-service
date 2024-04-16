@@ -27,9 +27,14 @@ public class ProductTest {
 
     @Test
     public void test2(){
-        System.out.println(service.getById(1L)+"\n");
+        /*System.out.println(service.getById(1L)+"\n");
         System.out.println(service.getBySku("A0001")+ "\n");
-        System.out.println(service.getByProductName("Samsung Galaxy S20 Ultra"));
+        System.out.println(service.getByProductName("Samsung Galaxy S20 Ultra"));*/
+        //System.out.println(service.getByIdAndClientId(1L, 1L));
+        Product p = service.getByIdAndClientId(1L, 1L);
+        p.setSellingPriceFromDouble(4299.0);
+        service.update(p);
+        System.out.println(service.getByIdAndClientId(1L, 1L));
     }
 
     @Test

@@ -51,4 +51,10 @@ public class AsnTest {
             System.out.println(asn);
         }
     }
+
+    @Test
+    public void test4(){
+        Asn asn = service.getById(1L);
+        System.out.println(asn);
+    }
 }

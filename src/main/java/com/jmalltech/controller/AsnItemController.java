@@ -63,7 +63,7 @@ public class AsnItemController {
     public ResponseEntity<?> deleteAsnItemsByAsnId(@PathVariable Long asnId) {
         boolean deleted = aIService.removeAsnItemsByAsnId(asnId);
         if (deleted) {
-            return ResponseEntity.ok("AsnItems deleted successfully.");
+            return ResponseEntity.ok().body("{\"message\": \"AsnItems deleted successfully.\"}");
         } else {
             return ResponseHelper.badRequestResponse("AsnItems not found.");
         }

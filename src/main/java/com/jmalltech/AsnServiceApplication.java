@@ -11,6 +11,6 @@ import org.springframework.cache.annotation.EnableCaching;
 public class AsnServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(AsnServiceApplication.class, args);
-        System.out.println("Hello world!");
+        System.out.println("Hello asn service!");
     }
 }

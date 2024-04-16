@@ -27,19 +27,19 @@ public class AsnDomainService {
         return asn;
     }
 
-    @Cacheable(value = "asn", key = "#id", unless = "#result == null")
+    @Cacheable(value = "asn", key = "#id.toString()", unless = "#result == null")
     public Asn getById(Long id) {
         return service.getById(id);
     }
 
-    @CachePut(value = "asn", key = "#asn.id", condition = "#result != null", unless = "#result == null")
+    @CachePut(value = "asn", key = "#asn.id.toString()", condition = "#result != null", unless = "#result == null")
     public Asn update(Asn asn) {
         boolean success = service.updateById(asn);
         if (!success) return null;
         return service.getById(asn.getId());
     }
 
-    @CacheEvict(value = "asn", key = "#id")
+    @CacheEvict(value = "asn", key = "#id.toString()")
     public boolean remove(Long id) {
         Asn asn = service.getById(id);
         if (asn != null) {

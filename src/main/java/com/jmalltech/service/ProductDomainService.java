@@ -40,7 +40,7 @@ public class ProductDomainService {
         return service.getById(id);
     }
 
-    @Cacheable(value = "product", key = "#id", unless = "#result == null")
+    @Cacheable(value = "product", key = "#id.toString()", unless = "#result == null")
     public Product getByIdAndClientId(Long id, Long clientId) {
         return mapper.selectByIdAndClientId(id, clientId);
     }
@@ -67,7 +67,7 @@ public class ProductDomainService {
 
     @Caching(
             put = {
-                    @CachePut(value = "product", key = "#product.id", condition = "#result != null", unless = "#result == null"),
+                    @CachePut(value = "product", key = "#product.id.toString()", condition = "#result != null", unless = "#result == null"),
                     @CachePut(value = "product", key = "#product.sku", condition = "#result != null", unless = "#result == null"),
                     @CachePut(value = "product", key = "#product.name", condition = "#result != null", unless = "#result == null")}
     )
@@ -82,7 +82,7 @@ public class ProductDomainService {
 
 
     @Caching(evict = {
-            @CacheEvict(value = "product", key = "#id"),
+            @CacheEvict(value = "product", key = "#id.toString()"),
     })
     public boolean remove(Long id) {
         Product product = service.getById(id);
@@ -94,7 +94,7 @@ public class ProductDomainService {
         return service.removeById(id);
     }
 
-    @Cacheable(value = "productList", key = "#clientId", unless = "#result == null || #result.isEmpty()")
+    @Cacheable(value = "productList", key = "#clientId.toString()", unless = "#result == null || #result.isEmpty()")
     public List<Product> getProductListByClientId(Long clientId) {
         return mapper.selectProductsByClientId(clientId);
     }
