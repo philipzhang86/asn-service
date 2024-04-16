@@ -53,4 +53,8 @@ public class AsnDomainService {
     public List<Asn> getListByClientIdAndStatus(Long clientId, Short status) {
         return mapper.getListByClientIdAndStatusSortByArrivalTime(clientId, status);
     }
+
+    public List<Asn> getListByClientId(Long clientId) {
+        return mapper.getListByClientId(clientId);
+    }
 }

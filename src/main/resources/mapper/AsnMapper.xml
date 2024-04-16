@@ -25,4 +25,11 @@
           AND status = #{status}
         ORDER BY expected_arrival_time ASC
     </select>
+
+    <select id="getListByClientId" resultMap="BaseResultMap">
+        SELECT *
+        FROM mwms_asn
+        WHERE client_id = #{clientId}
+        ORDER BY expected_arrival_time ASC
+    </select>
 </mapper>

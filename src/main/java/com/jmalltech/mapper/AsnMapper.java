@@ -13,8 +13,9 @@ import java.util.List;
 * @Entity com.jmalltech.domain.Asn
 */
 public interface AsnMapper extends BaseMapper<Asn> {
-
     List<Asn> getListByClientIdAndStatusSortByArrivalTime(Long clientId, short status);
+
+    List<Asn> getListByClientId(Long clientId);
 }
 
 
