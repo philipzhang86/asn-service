@@ -364,3 +364,11 @@ m
 =src/main/java/com/jmalltech/controller/AsnItemController.java,9/c/9c1ea4c7986c778e0d1c9bc4994c4c712a944348
 i
 9src/main/java/com/jmalltech/controller/AsnController.java,f/6/f65bb2978d57aa4a4456cc2f3aba8ac8ea8f8349
+k
+;src/main/java/com/jmalltech/config/KafkaProducerConfig.java,8/b/8ba8db18e5b8e6a1b07281caf582d0697726bcb3
+k
+;src/main/java/com/jmalltech/config/KafkaConsumerConfig.java,4/9/49d84ec9c71e8b959a1003da92052da62ab00750
+e
+5src/main/java/com/jmalltech/pojo/AsnStatusUpdate.java,9/7/971be4781342d9ba7dc55e6d4a4c164e4bad2bb4
+z
+Jsrc/main/java/com/jmalltech/controller/InternalAsnInventoryController.java,a/1/a1fbce5040e37a4c1d39f04b019bc00d2f2b4e45

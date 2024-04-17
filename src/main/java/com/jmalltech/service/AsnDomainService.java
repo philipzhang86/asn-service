@@ -15,6 +15,9 @@ import java.util.List;
 public class AsnDomainService {
     private AsnService service;
     private AsnMapper mapper;
+    /*@Autowired
+    private KafkaTemplate<String, String> kafkaTemplate;
+    private ObjectMapper objectMapper = new ObjectMapper();*/
 
     @Autowired
     public AsnDomainService(AsnService service, AsnMapper mapper) {
@@ -57,4 +60,24 @@ public class AsnDomainService {
     public List<Asn> getListByClientId(Long clientId) {
         return mapper.getListByClientId(clientId);
     }
+
+    /*public void sendAsnCreatedMessage(Asn asn) throws JsonProcessingException {
+        String message = objectMapper.writeValueAsString(asn);
+        kafkaTemplate.send("asn-inbound-topic", message);
+    }
+
+    @KafkaListener(topics = "asn-update-status-topic")
+    public void handleInventoryUpdateMessage(String message) throws Exception {
+        AsnStatusUpdate statusUpdate = objectMapper.readValue(message, AsnStatusUpdate.class);
+        updateAsnStatus(statusUpdate.getAsnId(), (short)statusUpdate.getStatus());
+    }
+
+    private void updateAsnStatus(Long asnId, short status) {
+        Asn asn = service.getById(asnId);
+        if(asn == null) System.out.println("Asn not found for ID: " + asnId);
+        else{
+            asn.setStatus(status);
+            service.updateById(asn);
+        }
+    }*/
 }
