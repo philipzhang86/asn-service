@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/internal")//http://localhost:9081/asn-service   url prefix
+@RequestMapping("/internal")//http://localhost:9081/asn-service   full url prefix
 public class InternalAsnInventoryController {
     private AsnDomainService asnService;
     private AsnItemDomainService asnItemService;

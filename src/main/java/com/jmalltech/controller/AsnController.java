@@ -1,10 +1,12 @@
 package com.jmalltech.controller;
 
+import com.alibaba.fastjson2.JSON;
 import com.jmalltech.entity.Asn;
 import com.jmalltech.helper.ResponseHelper;
 import com.jmalltech.service.AsnDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,10 +16,12 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class AsnController {
     private AsnDomainService aService;
+    private KafkaTemplate<String,String> kafkaTemplate;
 
     @Autowired
-    public AsnController(AsnDomainService aService) {
+    public AsnController(AsnDomainService aService, KafkaTemplate<String,String> kafkaTemplate) {
         this.aService = aService;
+        this.kafkaTemplate = kafkaTemplate;
     }
 
     @GetMapping("/by-id/{id}")
@@ -74,5 +78,11 @@ public class AsnController {
         } else {
             return ResponseHelper.badRequestResponse("Asn not found.");
         }
+    }
+
+    @PostMapping("/send-message")
+    public ResponseEntity<?> sendAsnMessage(@RequestBody Asn asn) {
+        kafkaTemplate.send("asn-service-topic", JSON.toJSONString(asn));
+        return ResponseEntity.ok().body("{\"message\":\"Asn message sent successfully.\"}");
     }
 }
