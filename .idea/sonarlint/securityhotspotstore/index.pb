@@ -360,3 +360,5 @@ e
 5src/main/java/com/jmalltech/pojo/AsnStatusUpdate.java,9/7/971be4781342d9ba7dc55e6d4a4c164e4bad2bb4
 z
 Jsrc/main/java/com/jmalltech/controller/InternalAsnInventoryController.java,a/1/a1fbce5040e37a4c1d39f04b019bc00d2f2b4e45
+p
+@src/main/java/com/jmalltech/client/InventoryServiceListener.java,0/e/0e729f27fc6e917de68d3f2af18c55d16944b135
