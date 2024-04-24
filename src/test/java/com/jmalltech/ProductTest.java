@@ -62,4 +62,10 @@ public class ProductTest {
             System.out.println(p);
         }
     }
+
+    @Test
+    public void getProductBySku(){
+        Product product = service.getBySku("A0023");
+        System.out.println(product);
+    }
 }

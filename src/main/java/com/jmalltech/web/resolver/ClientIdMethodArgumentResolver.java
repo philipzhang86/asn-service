@@ -28,6 +28,8 @@ public class ClientIdMethodArgumentResolver implements HandlerMethodArgumentReso
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
                                   NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
         HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
+        assert request != null;
+        System.out.println(request.getHeader("Authorization"));
         return jwtTokenService.getClientIdIfClient(request);
     }
 

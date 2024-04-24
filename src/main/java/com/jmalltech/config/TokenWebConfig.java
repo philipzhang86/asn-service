@@ -8,10 +8,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.List;
 
 @Configuration
-public class WebConfig implements WebMvcConfigurer {
+public class TokenWebConfig implements WebMvcConfigurer {
     private final ClientIdMethodArgumentResolver clientIdMethodArgumentResolver;
 
-    public WebConfig(ClientIdMethodArgumentResolver clientIdMethodArgumentResolver) {
+    public TokenWebConfig(ClientIdMethodArgumentResolver clientIdMethodArgumentResolver) {
         this.clientIdMethodArgumentResolver = clientIdMethodArgumentResolver;
     }
 

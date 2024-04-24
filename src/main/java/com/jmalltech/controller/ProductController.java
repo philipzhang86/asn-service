@@ -71,6 +71,11 @@ public class ProductController {
         Product createdProduct = pDService.insert(product);
         return ResponseEntity.ok(createdProduct);
     }
+    /*@PostMapping("/")
+    public ResponseEntity<?> insertProduct(@RequestBody Product product){
+        Product createdProduct = pDService.insert(product);
+        return ResponseEntity.ok(createdProduct);
+    }*/
 
     @PutMapping("/")
     public ResponseEntity<?> updateProduct(@RequestBody Product product) {

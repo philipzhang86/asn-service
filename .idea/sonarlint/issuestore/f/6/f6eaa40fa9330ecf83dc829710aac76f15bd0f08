@@ -1,9 +1,7 @@
 
-	java:S112."FDefine and throw a dedicated exception instead of using a generic one.(ì®êùûÿÿÿÿ8Æà¯—í1J$1b5a2889-d432-4df0-aead-2335d576827f
-œ	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(÷©Ùà8Êà¯—í1J$69742202-3341-4a93-83c6-e9f3282147c3
-…
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8Êà¯—í1J$6c1c07ee-718e-44b8-8a1e-8825d1ac9cda
+	java:S112."FDefine and throw a dedicated exception instead of using a generic one.(ì®êùûÿÿÿÿ8Æà¯—í1J$b8be1006-a7b9-4719-ac64-45550ffb4a51
+œ	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(÷©Ùà8Êà¯—í1J$174b3282-1e40-458b-b504-5134b3a59dc7
 ˜
-java:S3305"UInject this field value directly into "redissonClient", the only method that uses it.(å½Æ8Ëà¯—í1J$aea0a509-9ba2-4fa9-8b2c-cc9c6a1ea352
+java:S3305"UInject this field value directly into "redissonClient", the only method that uses it.(å½Æ8Ëà¯—í1J$a119bea4-14b8-4877-afb7-da1049b988e5
 n
-java:S1068"+Remove this unused "timeout" private field.(÷©Ùà8ŒÌÀœí1J$853515f0-9ad1-4fca-8cdc-397d40b6baff
+java:S1068"+Remove this unused "timeout" private field.(÷©Ùà8ŒÌÀœí1J$b8087bdd-2772-4194-8dd1-1a900795fc4a
