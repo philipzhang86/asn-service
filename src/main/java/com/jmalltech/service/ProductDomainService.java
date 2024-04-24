@@ -30,7 +30,7 @@ public class ProductDomainService {
 
     public Product insert(Product product) {
         if(service.save(product)){
-            Objects.requireNonNull(cacheManager.getCache(PRODUCT_LIST_CACHE)).evict(product.getClientId());
+            Objects.requireNonNull(cacheManager.getCache(PRODUCT_LIST_CACHE)).evict(product.getClientId().toString());
         }
         return product;
     }
@@ -74,7 +74,7 @@ public class ProductDomainService {
     public Product update(Product product) {
         boolean success = service.updateById(product);
         if (success) {
-            Objects.requireNonNull(cacheManager.getCache(PRODUCT_LIST_CACHE)).evict(product.getClientId());
+            Objects.requireNonNull(cacheManager.getCache(PRODUCT_LIST_CACHE)).evict(product.getClientId().toString());
             return service.getById(product.getId());
         }
         return null;
@@ -89,7 +89,7 @@ public class ProductDomainService {
         if (product != null) {
             Objects.requireNonNull(cacheManager.getCache("product")).evict(product.getSku());
             Objects.requireNonNull(cacheManager.getCache("product")).evict(product.getName());
-            Objects.requireNonNull(cacheManager.getCache(PRODUCT_LIST_CACHE)).evict(product.getClientId());
+            Objects.requireNonNull(cacheManager.getCache(PRODUCT_LIST_CACHE)).evict(product.getClientId().toString());
         }
         return service.removeById(id);
     }
