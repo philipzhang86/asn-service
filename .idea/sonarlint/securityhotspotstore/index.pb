@@ -364,3 +364,5 @@ p
 @src/main/java/com/jmalltech/client/InventoryServiceListener.java,0/e/0e729f27fc6e917de68d3f2af18c55d16944b135
 f
 6src/main/java/com/jmalltech/config/TokenWebConfig.java,8/c/8c2a0b125f0f35b293be81d43d4786f0e85c59ac
+h
+8src/main/java/com/jmalltech/client/SimpleHelloWorld.java,b/d/bd78768fa2b1c6b23e529d7002a2058960dbf717

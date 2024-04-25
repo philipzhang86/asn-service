@@ -4,6 +4,7 @@ import com.alibaba.fastjson2.JSON;
 import com.jmalltech.entity.Asn;
 import com.jmalltech.helper.ResponseHelper;
 import com.jmalltech.service.AsnDomainService;
+import com.jmalltech.web.annotation.ClientId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -54,8 +55,29 @@ public class AsnController {
         }
     }
 
+    @GetMapping("/client-list")
+    public ResponseEntity<?> getAllMyList(@ClientId Long clientId) {
+        List<Asn> list = aService.getListByClientId(clientId);
+        if (!list.isEmpty()) {
+            return ResponseEntity.ok(list);
+        } else {
+            return ResponseHelper.notFoundResponse("Asn not found for clientId: " + clientId);
+        }
+    }
+
+    @GetMapping("/client-list/{status}")
+    public ResponseEntity<?> getAllMyListWithStatus(@ClientId Long clientId, @PathVariable String status) {
+        List<Asn> list = aService.getListByClientIdAndStatus(clientId, Short.valueOf(status));
+        if (!list.isEmpty()) {
+            return ResponseEntity.ok(list);
+        } else {
+            return ResponseHelper.notFoundResponse("Asn not found for clientId: " + clientId + " and status: " + status);
+        }
+    }
+
     @PostMapping("/")
-    public ResponseEntity<Asn> insertAsn(@RequestBody Asn asn) {
+    public ResponseEntity<Asn> insertAsn(@RequestBody Asn asn, @ClientId Long clientId) {
+        asn.setClientId(clientId);
         Asn createdAsn = aService.insert(asn);
         return ResponseEntity.ok(createdAsn);
     }

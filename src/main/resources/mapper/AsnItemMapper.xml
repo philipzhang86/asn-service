@@ -17,7 +17,7 @@
 
     <sql id="Base_Column_List">
         id,asn_id,product_id,
-        created_date,updated_date,sku_id,quantity
+        created_date,updated_date,sku_id,quantity,asn_item_name
     </sql>
 
 

@@ -71,4 +71,9 @@ public class AsnItemTest {
         System.out.println(service.removeAsnItemsByAsnId(2L));
     }
 
+    @Test
+    public void test7(){
+        System.out.println(service.getAsnItemListFromAsnId(1L));
+    }
+
 }
