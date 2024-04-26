@@ -31,6 +31,13 @@
         asn_id = #{asnId}
     </select>
 
+    <select id="selectAsnItemBySkuIdAndAsnId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from mwms_asn_item
+        where sku_id = #{skuId} and asn_id = #{asnId}
+    </select>
+
     <delete id="deleteAsnItemsByAsnId">
         DELETE FROM mwms_asn_item
         WHERE asn_id = #{asnId}

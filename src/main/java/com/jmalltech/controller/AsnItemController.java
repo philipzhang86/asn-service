@@ -28,6 +28,16 @@ public class AsnItemController {
         }
     }
 
+    @GetMapping("/by-asn-id-and-sku/{asnId}/{sku}")
+    public ResponseEntity<?> getAsnItemBySkuAndAsnId(@PathVariable String sku, @PathVariable Long asnId) {
+        AsnItem asnItem = aIService.getAsnItemBySkuAndAsnId(sku, asnId);
+        if (asnItem != null) {
+            return ResponseEntity.ok(asnItem);
+        } else {
+            return ResponseHelper.notFoundResponse("AsnItem not found for sku: " + sku + " and asnId: " + asnId);
+        }
+    }
+
     @GetMapping("/by-asn-id/{asnId}")
     public ResponseEntity<?> getAsnItemListByAsnId(@PathVariable Long asnId) {
         return ResponseEntity.ok(aIService.getAsnItemListFromAsnId(asnId));

@@ -76,4 +76,9 @@ public class AsnItemTest {
         System.out.println(service.getAsnItemListFromAsnId(1L));
     }
 
+    @Test
+    public void test8(){
+        System.out.println(service.getAsnItemBySkuAndAsnId("A0001", 1L));
+    }
+
 }

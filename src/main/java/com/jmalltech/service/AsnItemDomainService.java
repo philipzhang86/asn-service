@@ -45,5 +45,9 @@ public class AsnItemDomainService {
         return mapper.selectAsnItemListByAsnId(asnId);
     }
 
+    public AsnItem getAsnItemBySkuAndAsnId(String sku, Long asnId) {
+        return mapper.selectAsnItemBySkuIdAndAsnId(sku, asnId);
+    }
+
 
 }

@@ -17,6 +17,8 @@ public interface AsnItemMapper extends BaseMapper<AsnItem> {
     @Transactional
     boolean deleteAsnItemsByAsnId(Long asnId);
 
+    AsnItem selectAsnItemBySkuIdAndAsnId(String skuId, Long asnId);
+
 }
 
 
